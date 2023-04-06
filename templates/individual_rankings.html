@@ -14,6 +14,9 @@
             <thead>
                 <tr>
                     <th scope="col">Name</th>
+                    <th scope="col">Wins</th>
+                    <th scope="col">Games</th>
+                    <th scope="col">Win %</th>
                     <th scope="col">Elo</th>
                 </tr>
             </thead>
@@ -21,6 +24,9 @@
                 {% for player in players %}
                 <tr>
                     <td>{{ player.name }}</td>
+                    <td>{{ player.wins }}</td>
+                    <td>{{ player.games }}</td>
+                    <td>{{ player.win_percentage }}</td>
                     <td>{{ player.elo }}</td>
                 </tr>
                 {% endfor %}

@@ -10,10 +10,14 @@ class Team:
 
     def add_win(self):
         self.wins += 1
+        self.player1.add_win()
+        self.player2.add_win()
         self.win_percentage = self.win_percentage_calc()
 
     def add_game(self):
         self.games += 1
+        self.player1.add_game()
+        self.player2.add_game()
         self.win_percentage = self.win_percentage_calc()
 
     def win_percentage_calc(self):
