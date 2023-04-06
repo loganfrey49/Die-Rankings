@@ -34,7 +34,6 @@ class Tracking:
         team1 = game.team1
         team2 = game.team2
 
-
         winner = team1
         loser = team2
 
@@ -51,14 +50,25 @@ class Tracking:
 
         winner_elo = (winner.player1.elo + winner.player2.elo) / 2
         loser_elo = (loser.player1.elo + loser.player2.elo) / 2
-        rating_diff = winner_elo - loser_elo
+        rating_diff = loser_elo - winner_elo
 
+        """
         for winning_player, losing_player in [(winner.player1, loser.player1), (winner.player2, loser.player2)]:
-            expected_outcome = 1 / (1 + 10**(-rating_diff / 400))
-            rating_change = int(k_factor * (1 - expected_outcome) * (point_diff / 20))
+            expected_outcome = 1 / (1 + 10**(-rating_diff / 100))
+            rating_change = int(k_factor * (1 - expected_outcome) * (point_diff / 10))
             winning_player.update_elo(rating_change)
             losing_player.update_elo(-rating_change)
+        """
+        for winning_player in [winner.player1, winner.player2]:
+            expected_outcome = 8 + (rating_diff / 10)
+            rating_change = round(expected_outcome + (point_diff / 8))
+            winning_player.update_elo(rating_change)
+            
 
+        for losing_player in [loser.player1, loser.player2]:
+            expected_outcome = -8 - (rating_diff / 10)
+            rating_change = round(expected_outcome - (point_diff / 8))
+            losing_player.update_elo(rating_change)
 
         #self.save_data()
         #game.save_data()

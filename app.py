@@ -187,10 +187,18 @@ def edit_game(game_id):
     return render_template('edit_game.html', game=game)
 
 
-@app.route('/delete_game/<game_id>')
+
+
+@app.route('/delete_game/<game_id>', methods=['POST'])
 def delete_game(game_id):
-    delete_game_from_firebase(game_id)
-    return redirect(url_for('game_history'))
+    password = request.form['password']
+    correct_password = 'yhessno'  # Replace this with the correct password
+
+    if password == correct_password:
+        delete_game_from_firebase(game_id)
+        return redirect(url_for('game_history'))
+    else:
+        return "Invalid password", 403
 
 
 
