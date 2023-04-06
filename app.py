@@ -8,7 +8,7 @@ tracking = Tracking()
 
 app = Flask(__name__)
 
-cred = credentials.Certificate("die-rankings-firebase-adminsdk-3qdz9-87bd1c6947.json")
+cred = credentials.Certificate("die-rankings-firebase-admin.json") #you need to upload your own firebase file
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
