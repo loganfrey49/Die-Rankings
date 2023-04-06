@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game History</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">Game History</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Team 1</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Team 2</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                <tr>
+                    <td>{{ game.team1_player1 }} &amp; {{ game.team1_player2 }}</td>
+                    <td>{{ game.team1_score }} - {{ game.team2_score }}</td>
+                    <td>{{ game.team2_player1 }} &amp; {{ game.team2_player2 }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_game', game_id=game.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <!-- <a href="{{ url_for('delete_game', game_id=game.id) }}" class="btn btn-danger btn-sm">Delete</a> -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="btn btn-secondary mt-3" href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+
+    <!-- Bootstrap Javascripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Player</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">Add New Player</h1>
+        <form action="{{ url_for('add_player') }}" method="post">
+            <div class="mb-3">
+                <label for="player_name" class="form-label">Player Name</label>
+                <input type="text" class="form-control" id="player_name" name="player_name" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Player</button>
+        </form>
+        <a class="btn btn-secondary mt-3" href="{{ url_for('enter_game') }}">Back to Enter Game</a>
+    </div>
+
+    <!-- Bootstrap Javascripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

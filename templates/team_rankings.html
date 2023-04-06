@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Rankings</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">Team Rankings</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Team</th>
+                    <th scope="col">Wins</th>
+                    <th scope="col">Games</th>
+                    <th scope="col">Win Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for team in teams %}
+                <tr>
+                    <td>{{ team.player1.name }} - {{ team.player2.name }}</td>
+                    <td>{{ team.wins }}</td>
+                    <td>{{ team.games }}</td>
+                    <td>{{ team.win_percentage }}%</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="btn btn-secondary mt-3" href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+
+    <!-- Bootstrap Javascripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

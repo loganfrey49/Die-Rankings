@@ -6,14 +6,17 @@ class Team:
         self.player2 = player2
         self.wins = wins
         self.games = games
+        self.win_percentage = 0.0
 
     def add_win(self):
         self.wins += 1
+        self.win_percentage = self.win_percentage_calc()
 
     def add_game(self):
         self.games += 1
+        self.win_percentage = self.win_percentage_calc()
 
-    def win_percentage(self):
+    def win_percentage_calc(self):
         return round((self.wins / self.games) * 100, 2) if self.games > 0 else 0
 
     def __str__(self):

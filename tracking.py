@@ -3,26 +3,24 @@ from player import Player
 from team import Team
 from game import Game
 
+
 class Tracking:
-    def __init__(self, filename):
+    def __init__(self, filename = None):
         self.filename = filename
         self.players = []
         self.teams = []
 
-    def load_data(self):
-        if os.path.exists(self.filename):
-            with open(self.filename, 'r') as f:
-                lines = f.readlines()
-                for line in lines:
-                    if ',' in line:
-                        name1, name2, wins, games = line.strip().split(',')
-                        player1 = self.get_player(name1)
-                        player2 = self.get_player(name2)
-                        team = Team(player1, player2, int(wins), int(games))
-                        self.teams.append(team)
-                    else:
-                        name, elo = line.strip().split()
-                        self.players.append(Player(name, int(elo)))
+    def load_data(self, game_history):
+
+        self.players = []
+        self.teams = []
+
+        for game in game_history:
+            team1 = self.get_team(self.get_player(game['team1_player1']), self.get_player(game['team1_player2']))
+            team2 = self.get_team(self.get_player(game['team2_player1']), self.get_player(game['team2_player2']))
+            game = Game(team1, team2, [int(game['team1_score']), int(game['team2_score'])])
+            print(game)
+            self.update_data(game)
 
     def save_data(self):
         with open(self.filename, 'w') as f:
@@ -62,8 +60,8 @@ class Tracking:
             losing_player.update_elo(-rating_change)
 
 
-        self.save_data()
-        game.save_data()
+        #self.save_data()
+        #game.save_data()
 
 
     def get_player(self, name):
@@ -92,3 +90,4 @@ class Tracking:
         print("\n\nTeam Rankings:")
         for team in sorted(self.teams, key=lambda x: x.wins, reverse=True):
             print(team)
+
