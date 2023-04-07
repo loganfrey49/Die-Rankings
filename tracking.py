@@ -48,22 +48,30 @@ class Tracking:
 
 
 
-        point_diff = game.point_difference()
+        
 
         winner_elo = (winner.player1.elo + winner.player2.elo) / 2
         loser_elo = (loser.player1.elo + loser.player2.elo) / 2
         rating_diff = loser_elo - winner_elo
-      
+
+        win_reward = 8
+
+        rating_diff_multiplier = 0.1
+
+        compensated_win_reward = win_reward + (rating_diff * rating_diff_multiplier)
+
+        point_diff = game.point_difference()
+
+        point_diff_multiplier = 0.125
+
+        rating_change = round((compensated_win_reward + (point_diff * point_diff_multiplier)), 2)
+
         for winning_player in [winner.player1, winner.player2]:
-            expected_outcome = 8 + (rating_diff / 10)
-            rating_change = round(expected_outcome + (point_diff / 8))
-            winning_player.update_elo(rating_change)
+            winning_player.update_elo(round(rating_change+0.5, 2))
             
 
         for losing_player in [loser.player1, loser.player2]:
-            expected_outcome = -8 - (rating_diff / 10)
-            rating_change = round(expected_outcome - (point_diff / 8))
-            losing_player.update_elo(rating_change)
+            losing_player.update_elo(round(-rating_change+0.5, 2))
 
 
 
