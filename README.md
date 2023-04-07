@@ -1,7 +1,5 @@
 # Die-Rankings
 
-![Die Rankings](https://image.shutterstock.com/image-vector/dice-vector-icon-isolated-white-260nw-1678463985.jpg)
-
 This web application is a simple ranking system for a dice game, allowing users to track individual and team rankings, game history, and more. The project utilizes Python, Flask, and Firebase for data storage and retrieval.
 
 ## Table of Contents
