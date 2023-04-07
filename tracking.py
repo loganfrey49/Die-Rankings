@@ -45,11 +45,6 @@ class Tracking:
         winner.add_win()
         loser.add_game()
 
-
-
-
-        
-
         winner_elo = (winner.player1.elo + winner.player2.elo) / 2
         loser_elo = (loser.player1.elo + loser.player2.elo) / 2
         rating_diff = loser_elo - winner_elo
@@ -69,7 +64,6 @@ class Tracking:
         for winning_player in [winner.player1, winner.player2]:
             winning_player.update_elo(round(rating_change+0.5, 2))
             
-
         for losing_player in [loser.player1, loser.player2]:
             losing_player.update_elo(round(-rating_change+0.5, 2))
 
