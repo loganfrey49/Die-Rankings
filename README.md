@@ -1,50 +1,71 @@
-# Die Rankings Web App
+# Die-Rankings
 
-Die Rankings is a Flask web app that allows users to track rankings of players and teams in a game. Users can enter game results, view individual player rankings, view team rankings, and see the game history with options to edit and delete games.
+![Die Rankings](https://image.shutterstock.com/image-vector/dice-vector-icon-isolated-white-260nw-1678463985.jpg)
+
+This web application is a simple ranking system for a dice game, allowing users to track individual and team rankings, game history, and more. The project utilizes Python, Flask, and Firebase for data storage and retrieval.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Demo](#demo)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
-- Enter game results
-- View individual player rankings
-- View team rankings
-- View game history with options to edit and delete games
+- Track individual and team rankings based on Elo rating
+- Enter game results and update rankings accordingly
+- Add new players to the system
+- View game history with options to edit or delete games
+- Utilizes Firebase for data storage and retrieval
 
-## Technologies
+## Installation
 
-- Python
-- Flask
-- Firebase Firestore
-- Bootstrap 5
-
-## Setup
-
-1. Clone this repository.
-```
-git clone https://github.com/benborszcz//Die-Rankings.git
-```
-
-2. Install the required packages.
+1. Clone the repo
 
 ```bash
-pip install Flask firebase-admin
+git clone https://github.com/benborszcz/Die-Rankings.git
 ```
 
-3. Replace the Firebase credentials file.
+2. Install required packages
 
-Replace the `path/to/firebase_credentials.json` in `app.py` with the path to your own Firebase project's credentials JSON file.
+```bash
+pip install -r requirements.txt
+```
 
-4. Run the Flask app.
+3. Set up your Firebase project and generate your own `die-rankings-firebase-admin.json` file. Replace the placeholder file in the project with your own.
+
+4. Run the app locally
 
 ```bash
 python app.py
 ```
 
-The web app should now be accessible at `http://127.0.0.1:5000/`.
+5. (Optional) If you'd like to use Docker, build and run the Docker image:
 
-## Deployment
+```bash
+docker build -t die-rankings .
+docker run -p 8080:8080 die-rankings
+```
 
-To deploy the Flask app on a platform like Google Cloud, Heroku, or any other platform that supports Python and Flask applications, follow the platform-specific deployment instructions.
+## Usage
+
+1. Navigate to the home page and start by adding new players to the system.
+
+2. Enter game results to update rankings and view the individual and team rankings.
+
+3. Browse the game history, with options to edit or delete games.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/someFeature`)
+3. Commit your changes (`git commit -m 'Add someFeature'`)
+4. Push to the branch (`git push origin feature/someFeature`)
+5. Create a new Pull Request
 
 ## License
 
-This project is open-source and available under the MIT License. See the `LICENSE` file for more information.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
