@@ -9,7 +9,6 @@ This web application is a simple ranking system for a dice game, allowing users 
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Demo](#demo)
 - [Contributing](#contributing)
 - [License](#license)
 
