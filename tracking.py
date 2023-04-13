@@ -67,6 +67,15 @@ class Tracking:
         for losing_player in [loser.player1, loser.player2]:
             losing_player.update_elo(round(-rating_change+0.5, 2))
 
+        # Team Elo
+        
+        team_elo_difference = loser.elo - winner.elo
+        team_compensated_win_reward = win_reward + (team_elo_difference * rating_diff_multiplier)
+        team_rating_change = round((team_compensated_win_reward + (point_diff * point_diff_multiplier)), 2)
+        winner.update_elo(round(team_rating_change+0.5, 2))
+        loser.update_elo(round(-team_rating_change+0.5, 2))
+        
+
 
 
 

@@ -27,7 +27,7 @@
                     <td>{{ player.wins }}</td>
                     <td>{{ player.games }}</td>
                     <td>{{ player.win_percentage }}</td>
-                    <td>{{ player.elo }}</td>
+                    <td>{{ '%.2f' | format(player.elo) }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

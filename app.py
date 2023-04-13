@@ -153,7 +153,7 @@ def team_rankings():
 
     teams = fetch_team_rankings_from_tracking()
 
-    teams = sorted(teams, key=lambda x: x.wins, reverse=True)
+    teams = sorted(teams, key=lambda x: x.elo, reverse=True)
 
     return render_template('team_rankings.html', teams=teams)
 
