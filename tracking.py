@@ -51,7 +51,7 @@ class Tracking:
 
         win_reward = 8
 
-        rating_diff_multiplier = 0.1
+        rating_diff_multiplier = 0.05
 
         compensated_win_reward = win_reward + (rating_diff * rating_diff_multiplier)
 
