@@ -3,6 +3,7 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from tracking import Tracking
 from game import Game
+from datetime import datetime
 
 tracking = Tracking()
 
@@ -21,7 +22,8 @@ def save_game_data_to_firebase(team1_player1, team1_player2, team2_player1, team
         'team2_player1': team2_player1,
         'team2_player2': team2_player2,
         'team1_score' : team1_score,
-        'team2_score' : team2_score
+        'team2_score' : team2_score,
+        'timestamp': datetime.now()
     }
     db.collection('games').add(game_data)
 

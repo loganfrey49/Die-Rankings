@@ -12,6 +12,9 @@ class Tracking:
 
     def load_data(self, game_history):
 
+        # Sort the game_history by timestamp from earliest to latest
+        game_history = sorted(game_history, key=lambda x: x['timestamp'])
+
         self.players = []
         self.teams = []
 
