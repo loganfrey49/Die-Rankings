@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Schedule</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">Schedule</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Game Number</th>
+                    <th scope="col">Team 1</th>
+                    <th scope="col">Team 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in schedule %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ game[0][0].name }} ({{'%.2f' | format(game[0][0].elo)}}) &amp; {{ game[0][1].name }} ({{'%.2f' | format(game[0][1].elo)}})</td>
+                    <td>{{ game[1][0].name }} ({{'%.2f' | format(game[1][0].elo)}}) &amp; {{ game[1][1].name }} ({{'%.2f' | format(game[1][1].elo)}})</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="btn btn-secondary mt-3" href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+
+    <!-- Bootstrap Javascripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -79,9 +79,6 @@ class Tracking:
         loser.update_elo(round(-team_rating_change+0.5, 2))
         
 
-
-
-
     def get_player(self, name):
         ret = None
         for player in self.players:
