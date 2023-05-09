@@ -28,6 +28,12 @@ def save_game_data_to_firebase(team1_player1, team1_player2, team2_player1, team
     }
     db.collection('games').add(game_data)
 
+def save_games_data_to_firebase(games_data):
+    batch = db.batch()
+    for game in games_data:
+        docRef = db.collection(u'games').document()
+        batch.set(docRef, game)
+    batch.commit()
 
 def fetch_individual_rankings_from_firebase():
     # Fetch individual rankings from Firebase
