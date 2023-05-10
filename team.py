@@ -27,5 +27,9 @@ class Team:
     def update_elo(self, delta):
         self.elo += delta
 
+    def calculate_elo(self):
+        mean = (self.player1.elo + self.player2.elo) / 2
+        self.elo = mean
+
     def __str__(self):
-        return f"{self.player1.name}-{self.player2.name}: {self.wins} wins, {self.games} games, {self.win_percentage()}% win rate"
+        return f"{self.player1.name}-{self.player2.name}: {self.wins} wins, {self.games} games, {str(self.win_percentage)}% win rate"

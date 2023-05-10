@@ -197,7 +197,6 @@ def team_rankings():
 @app.route('/game_history')
 def game_history():
     games = fetch_game_history_from_firebase()
-    print(games)
     return render_template('game_history.html', games=games)
 
 
